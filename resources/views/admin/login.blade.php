@@ -35,8 +35,10 @@
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">
+    @include('partials.errors')
     <!-- BEGIN LOGIN FORM -->
-    <form class="form-vertical login-form" action="" method="post">
+    {!! Form::open(['method' => 'POST', 'url' => '/login', 'class' => 'form-vertical login-form']) !!}
+
         <h3 class="form-title">Login to your account</h3>
         <div class="alert alert-error hide">
             <button class="close" data-dismiss="alert"></button>
@@ -48,7 +50,7 @@
             <div class="controls">
                 <div class="input-icon left">
                     <i class="icon-user"></i>
-                    <input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+                    <input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="email"/>
                 </div>
             </div>
         </div>
@@ -68,7 +70,7 @@
           <!-- <input type="button" class="btn blue pull-right" />
                <a href="dashboard">Login </a> <i class="m-icon-swapright m-icon-white"></i>-->
 
-            <a href="dashboard" > <input type='button' class='btn blue pull-right' name='finish' value='Login' /></a>
+             <button type='submit' class='btn blue pull-right' name='finish' value='Login' >Login</button>
         </div>
         <div class="forget-password">
             <h4>Forgot your password ?</h4>
@@ -77,8 +79,7 @@
                 to reset your password.
             </p>
         </div>
-
-    </form>
+        {!! Form::close() !!}
     <!-- END LOGIN FORM -->
     <!-- BEGIN FORGOT PASSWORD FORM -->
     <form class="form-vertical forget-form" action="index.html" method="post">

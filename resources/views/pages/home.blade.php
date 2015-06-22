@@ -32,8 +32,9 @@
 
 
                     <div id="navbar" class="navbar-collapse collapse">
+                    @if(!(\Auth::check()))
 
-                        {!! Form::open(['class' => 'navbar-form navbar-right']) !!}
+                        {!! Form::open(['class' => 'navbar-form navbar-right', 'method' => 'post' , 'url' => 'login']) !!}
 
                         <div class="form-group">
                             {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email'] ) !!}
@@ -48,6 +49,10 @@
                         </div>
 
                         {!! Form::close() !!}
+
+                        @else
+                        <div class="navbar-form navbar-right" style="color: #ffffff;"> Welcome, {{ \Auth::user()->fullName() }}</div>
+                    @endif
 
                         <!--<form class="navbar-form navbar-right">
                             <div class="form-group">

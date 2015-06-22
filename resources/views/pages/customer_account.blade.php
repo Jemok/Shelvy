@@ -51,7 +51,7 @@
 
                 <li>
 
-                    <p class="navbar-text">Signed in as <a href="#" class="navbar-link">James Mwangi</a></p>
+                    <p class="navbar-text">Signed in as <a href="#" class="navbar-link">{{ \Auth::user()->fullName( )}}</a></p>
 
                 </li>
 
@@ -63,7 +63,7 @@
                     <a href="customer_registration">Account Settings</a>
                 </li>
                 <li>
-                    <a href="customer_login">Logout</a>
+                    <a href="{{ url('/logout') }}">Logout</a>
                 </li>
             </ul>
         </div>

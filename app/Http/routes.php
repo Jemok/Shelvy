@@ -27,10 +27,18 @@ Route::get('/', [
    // 'uses' => 'RegistrationController@create'
 //]);
 
-Route::post('register', [
+/*Route::post('register', [
     'as' => 'register_path',
     'uses' => 'RegistrationController@store'
+]);*/
+
+Route::post('/register/cutomer', [
+    'as' => 'register_path',
+    'uses' => 'Auth\AuthController@postRegister'
 ]);
+
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');
 
 
 Route::get('home', 'HomeController@index');
@@ -38,6 +46,7 @@ Route::get('home', 'HomeController@index');
 Route::get('register1', 'PagesController@register');
 
 Route::get('login', 'PagesController@login');
+
 
 Route::get('dashboard', 'PagesController@show_dashboard');
 

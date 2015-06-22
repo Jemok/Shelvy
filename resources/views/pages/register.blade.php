@@ -41,8 +41,8 @@
 
                 <!--      Wizard container        -->
                 <div class="wizard-container">
-
-                    {!! Form::open() !!}
+                    @include('partials.errors')
+                    {!! Form::open(['method' => 'POST', 'url' => '/register/cutomer/']) !!}
 
                     <!--<!form action="register" method="post">-->
                         <div class="card wizard-card ct-wizard-azzure" id="wizard">
@@ -77,18 +77,18 @@
                                         <div class="col-sm-10 col-sm-offset-1">
                                             <div class="form-group">
                                                 <!--<label for="exampleInputEmail1">First Name</label>-->
-                                                {!! Form::label('first_name', 'First Name')!!}
+                                                {!! Form::label('firstName', 'First Name')!!}
 
                                                 <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Andrew...">-->
 
-                                                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'first name'])!!}
+                                                {!! Form::text('firstName', null, ['class' => 'form-control', 'placeholder' => 'first name'])!!}
                                             </div>
                                             <div class="form-group">
                                                 <!--<label for="exampleInputEmail1">Last Name</label>-->
                                                 {!! Form::label('last_name', 'Last Name')!!}
                                                 <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Smith...">-->
 
-                                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'last name'])!!}
+                                                {!! Form::text('lastName', null, ['class' => 'form-control', 'placeholder' => 'last name'])!!}
 
                                             </div>
                                         </div>
@@ -113,8 +113,8 @@
                                         </div>
                                         <div class="form-group">
                                             <!--<label for="exampleInputEmail1">Repeat Password</label>-->
-                                            {!! Form::label('repeat_password', 'Repeat Password')!!}
-                                            {!! Form::password('repeat_password', ['class' => 'form-control', 'placeholder' => 'Repeat Password']) !!}
+                                            {!! Form::label('password_ confirmation', 'Repeat Password')!!}
+                                            {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Repeat Password']) !!}
                                             <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Smith...">-->
                                         </div>
 
@@ -122,7 +122,7 @@
                                             <!--<label for="exampleInputEmail1">Phone Number</label>-->
                                             {!! Form::label('phone_number', 'Phone Number' ) !!}
                                             <!--<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Smith...">-->
-                                            {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'phone number']) !!}
+                                            {!! Form::text('phoneNumber', null, ['class' => 'form-control', 'placeholder' => 'phone number']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@
                                                 {!! Form::label('current_location', 'Current Location')!!}
 
                                                 <!--<input type="text" class="form-control" placeholder="242">-->
-                                                {!! Form::text('current_location', null, ['class' => 'form-control', 'placeholder' => 'current location']) !!}
+                                                {!! Form::text('location', null, ['class' => 'form-control', 'placeholder' => 'current location']) !!}
 
                                             </div>
 
@@ -168,7 +168,7 @@
 
                                                 <!--<input type="text" class="form-control" placeholder="New York...">-->
 
-                                                {!! Form::text('location_two', null, ['class' => 'form-control', 'placeholder' => 'place you shop often']) !!}
+                                                {!! Form::text('preferredShop', null, ['class' => 'form-control', 'placeholder' => 'place you shop often']) !!}
 
                                             </div>
 
@@ -188,7 +188,7 @@
 
                                                 </select>-->
 
-                                                {!! Form::select('shopping_category',
+                                                {!! Form::select('interest',
                                                 (['0' => 'Select an Interest', '1' => 'Mobile Phones']),
                                                 null,
                                                 ['class' => 'form-control']) !!}
@@ -239,7 +239,7 @@
 
                         </div>
 
-                    </form>
+                 {!! Form::close() !!}
 
                 </div> <!-- wizard container -->
 
