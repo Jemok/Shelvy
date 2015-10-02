@@ -67,7 +67,7 @@ $(document).ready(function(){
 });
 
 
-//Function to show image before upload
+//Function to show image before blueimp
 
 function readURL(input) {
     if (input.files && input.files[0]) {

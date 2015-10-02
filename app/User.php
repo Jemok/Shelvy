@@ -36,4 +36,27 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->firstName . ' ' . $this->lastName;
     }
 
+
+    public function shops()
+    {
+        return $this->hasMany('App\Shop');
+    }
+
+    public function wishes()
+    {
+        return $this->hasMany('App\Wish_product');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany('App\Cart');
+    }
+
+
+
+
+
+
+
+
 }

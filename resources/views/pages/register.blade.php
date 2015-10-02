@@ -42,7 +42,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     @include('partials.errors')
-                    {!! Form::open(['method' => 'POST', 'url' => '/register/cutomer/']) !!}
+                    {!! Form::open(['method' => 'POST', 'url' => '/register/customer/']) !!}
 
                     <!--<!form action="register" method="post">-->
                         <div class="card wizard-card ct-wizard-azzure" id="wizard">

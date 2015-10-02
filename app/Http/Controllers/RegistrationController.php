@@ -24,4 +24,6 @@ class RegistrationController extends Controller
         return Redirect::home();
     }
 
+
+
 }

@@ -3,16 +3,24 @@
 <html>
 <head>
     <title>Spike shoes Website Template | Details :: w3layouts</title>
-    <link href="css/details/style.css" rel='stylesheet' type='text/css' />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/shop-homepage.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('css/details/style.css') }}" rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     </script>
-    <!----webfonts---->
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-        <!----//webfonts---->
-        <script src="js/jquery.min.js"></script>
+
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!----start-alert-scroller---->
-    <script type="text/javascript" src="js/details/jquery.easy-ticker.js"></script>
+    <script type="text/javascript" src="{{ asset('js/details/jquery.easy-ticker.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#demo').hide();
@@ -21,8 +29,8 @@
     </script>
     <!----start-alert-scroller---->
     <!-- start menu -->
-    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="js/megamenu.js"></script>
+    <link href="{{ asset('css/megamenu.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="{{ asset('js/megamenu.js') }}"></script>
     <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
     <script src="js/menu_jquery.js"></script>
     <!-- //End menu -->
@@ -39,12 +47,12 @@
     </script>
     <!---//move-top-top---->
     <!-- Owl Carousel Assets -->
-    <link href="css/details/owl.carousel.css" rel="stylesheet">
+    <link href="{{ asset('css/details/owl.carousel.css') }}" rel="stylesheet">
     <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/jquery.js"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
     <!-- Owl Carousel Assets -->
     <!-- Prettify -->
-    <script src="js/details/owl.carousel.js"></script>
+    <script src="{{ asset('js/details/owl.carousel.js') }}"></script>
     <script>
         $(document).ready(function() {
 
@@ -66,20 +74,76 @@
 </head>
 <body>
 
+<!-- Navigation -->
+<nav class="navbar navbar-fixed-top navbar-default" role="navigation" >
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
 
-<div class="content details-page">
+                <li>
+                    <a style="color: #4682b4;" href="#">Cart</a>
+                </li>
+
+                <li>
+                    <a style="color: #4682b4;"  href="#">Help</a>
+                </li>
+                <li>
+                    <a style="color: #4682b4;" href="#">About</a>
+                </li>
+                <li>
+                    <a style="color: #4682b4;"  href="customer_registration">Customer Accounts</a>
+                </li>
+
+                @if(!(\Auth::check()))
+                <li>
+
+
+                    <a style="color: #4682b4;"  href="login">Login</a>
+                </li>
+
+                @else
+                <li>
+
+                    <a href="{{ url('customer-account', \Auth::user()->id) }}" style="color: limegreen;">Signed In as, {{ \Auth::user()->fullName() }}</a>
+                </li>
+
+                @endif
+
+                <li>
+                    <a href="{{ url('/logout') }}" style="color: #4682b4;">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+
+<div class="content details-page" style="padding-top: 70px;">
 <!-start-product-details-->
 <div class="product-details">
 <div class="wrap">
-    <ul class="product-head">
+    <!--<ul class="product-head">
         <li><a href="#">Home</a> <span>::</span></li>
         <li class="active-page"><a href="#">shelves.com</a></li>
         <div class="clear"> </div>
-    </ul>
+    </ul>-->
     <!----details-product-slider--->
     <!-- Include the Etalage files -->
-    <link rel="stylesheet" href="css/details/etalage.css">
-    <script src="js/details/jquery.etalage.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/details/etalage.css') }}">
+    <script src="{{ asset('js/details/jquery.etalage.min.js') }}"></script>
     <!-- Include the Etalage files -->
     <script>
         jQuery(document).ready(function($){
@@ -89,7 +153,7 @@
                 thumb_image_height: 400,
                 source_image_width: 900,
                 source_image_height: 1000,
-                show_hint: true,
+                show_hint: true
                 //click_callback: function(image_anchor, instance_id){
                 //alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
                 //}
@@ -105,13 +169,18 @@
     <div class="details-left">
         <div class="details-left-slider">
             <ul id="etalage">
+
+                @foreach($images as $image )
+
                 <li>
-                    <a href="optionallink.html">
-                        <img class="etalage_thumb_image" src="images/product-slide/image1_thumb.jpg" />
-                        <img class="etalage_source_image" src="images/product-slide/image1_large.jpg" />
-                    </a>
+                   <!-- <a href="optionallink.html">-->
+                        <img class="etalage_thumb_image" src="{{ asset('product_images/80/' . $image->image_big) }}" />
+                        <img class="etalage_source_image" src="{{ asset('product_images/400/' . $image->image_big) }}" />
+                    <!-- </a> -->
                 </li>
-                <li>
+
+                @endforeach
+                <!--<li>
                     <img class="etalage_thumb_image" src="images/product-slide/image2_thumb.jpg" />
                     <img class="etalage_source_image" src="images/product-slide/image2_large.jpg" />
                 </li>
@@ -134,25 +203,28 @@
                 <li>
                     <img class="etalage_thumb_image" src="images/product-slide/image7_thumb.jpg" />
                     <img class="etalage_source_image" src="images/product-slide/image7_large.jpg" />
-                </li>
+                </li>-->
+
+
             </ul>
         </div>
         <div class="details-left-info">
             <div class="details-right-head">
-                <h1>Product Name Goes Here</h1>
+                <h1 style="color: limegreen;">{{ $product->product_name}} - Ksh {{ $product->product_price }}</h1>
+
                 <ul class="pro-rate">
                     <li><a class="product-rate" href="#"> <label> </label></a> <span> </span></li>
-                    <li><a href="#">0 Review(s) Add Review</a></li>
+                    <!--<li><a href="#">0 Review(s) Add Review</a></li>-->
                 </ul>
-                <p class="product-detail-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                <a class="learn-more" href="#"><h3>MORE DETAILS</h3></a>
+                <p class="product-detail-info">{{ $details->long_description }}</p>
+               <!-- <a class="learn-more" href="#"><h3>MORE DETAILS</h3></a>-->
                 <div class="product-more-details">
-                    <ul class="price-avl">
+                    <!--<ul class="price-avl">
                         <li class="price"><span>$153.39</span><label>$145.72</label></li>
 
                         <div class="clear"> </div>
-                    </ul>
-                    <ul class="product-colors">
+                    </ul>-->
+                    <!--<ul class="product-colors">
                         <h3>available Colors ::</h3>
                         <li><a class="color1" href="#"><span> </span></a></li>
                         <li><a class="color2" href="#"><span> </span></a></li>
@@ -163,8 +235,8 @@
                         <li><a class="color7" href="#"><span> </span></a></li>
                         <li><a class="color8" href="#"><span> </span></a></li>
                         <div class="clear"> </div>
-                    </ul>
-                    <ul class="prosuct-qty">
+                    </ul>-->
+                   <!-- <ul class="prosuct-qty">
                         <span>Quantity:</span>
                         <select>
                             <option>1</option>
@@ -174,18 +246,19 @@
                             <option>5</option>
                             <option>6</option>
                         </select>
-                    </ul>
-                    <input type="button" value="add to cart" />
+                    </ul>-->
+                   <!-- <input type="button" value="add to cart" />
                     <ul class="product-share">
                         <h3>All so Share On</h3>
-                        <ul>
+                        <ul>-->
+                    <!--
                             <li><a class="share-face" href="#"><span> </span> </a></li>
                             <li><a class="share-twitter" href="#"><span> </span> </a></li>
                             <li><a class="share-google" href="#"><span> </span> </a></li>
                             <li><a class="share-rss" href="#"><span> </span> </a></li>
                             <div class="clear"> </div>
                         </ul>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
         </div>
@@ -226,7 +299,7 @@
 <!---//responsive-tabs---->
 <!--//vertical Tabs-script-->
 <!--vertical Tabs-->
-<div id="verticalTab">
+<!--<div id="verticalTab">
     <ul class="resp-tabs-list">
         <li>Description</li>
         <li>Product tags</li>
@@ -254,7 +327,7 @@
 </div>
 <div class="clear"> </div>
 <!--- start-similar-products--->
-<div class="similar-products">
+<!--<div class="similar-products">
     <div class="similar-products-left">
         <h3>SIMILAR PRODUCTS</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -262,7 +335,7 @@
     <div class="similar-products-right">
         <!-- start content_slider -->
         <!--- start-rate---->
-        <script src="js/details/jstarbox.js"></script>
+        <!--<script src="js/details/jstarbox.js"></script>
         <link rel="stylesheet" href="css/details/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
         <script type="text/javascript">
             jQuery(function() {
@@ -286,7 +359,7 @@
             });
         </script>
         <!---//End-rate---->
-        <div id="owl-demo" class="owl-carousel">
+        <!--<div id="owl-demo" class="owl-carousel">
             <div class="item" onclick="location.href='details.html';">
                 <div class="product-grid fade sproduct-grid">
                     <div class="product-pic">
@@ -417,7 +490,7 @@
 </div>
 </div>
 <!---- start-bottom-grids---->
-<div class="bottom-grids">
+<!--<div class="bottom-grids">
     <div class="bottom-top-grids">
         <div class="wrap">
             <div class="bottom-top-grid">

@@ -38,117 +38,100 @@
 
 
 
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">shelves.com</a>
-
-                    </div>
-
-
-                    <div id="navbar" class="navbar-collapse collapse">
-
-                        <form class="navbar-form navbar-right">
-                            <div class="form-group">
-                                <input type="text" placeholder="Email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control">
-                            </div>
-                            <a href="customer_account"> <input type="button" class="btn btn-info" value="Sign in"/></a>
-
-                        </form>
-
-                        <p class="navbar-text navbar-left"><a href="login" class="navbar-link">Admin Login</a></p>
-                    </div><!--/.navbar-collapse -->
-                </div>
-            </nav>
-
 
             <div class="container">
                 <div class="row">
-                    <form role="form">
-                        <div class="col-lg-6">
-                            <div class="well well-sm"><span class="glyphicon glyphicon-asterisk"></span>Required Fields</div>
-                            <div class="form-group">
+                    {!! Form::open() !!}
+                    <!--<form role="form">-->
+                    <div class="col-lg-6">
+                        <div class="well well-sm"><span class="glyphicon glyphicon-asterisk"></span>Required Fields</div>
+                        <div class="form-group">
 
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="InputName" id="InputName" placeholder="First Name" required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                </div>
+                            <div class="input-group">
+                                {!! Form::text('shop_name', null, ['class' => 'form-control', 'placeholder' => 'Shop Name'])!!}
+                                <!--<input type="text" class="form-control" name="InputName" id="InputName" placeholder="First Name" required>-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                             </div>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Second Name" required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                </div>
+                            <div class="input-group">
+                                {!! Form::text('shop_description', null, ['class' => 'form-control', 'placeholder' => 'Short Description'])!!}
+                                <!--<input type="text" class="form-control" name="InputName" id="InputName" placeholder="Second Name" required>-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                             </div>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                <div class="input-group">
-                                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Email" required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                </div>
+                            <div class="input-group">
+                                {!! Form::text('shop_url', null, ['class' => 'form-control', 'placeholder' => 'Your preferred shop URL'])!!}
+
+                                <!--<input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Email" required>-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                             </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group">
 
-                                <div class="input-group">
-                                    <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                </div>
+                            <div class="input-group">
+                                {!! Form::text('shop_location', null, ['class' => 'form-control', 'placeholder' => 'Town where your shop is located'])!!}
+
+                                <!--<input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                             </div>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="InputPhoneNumber" id="InputPhoneNumber" placeholder="Phone Number" required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                </div>
+                            <div class="input-group">
+                                {!! Form::text('shop_building', null, ['class' => 'form-control', 'placeholder' => 'Building where your shop resides'])!!}
+
+                                <!--<input type="text" class="form-control" name="InputPhoneNumber" id="InputPhoneNumber" placeholder="Phone Number" required>-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                             </div>
+                        </div>
 
 
 
 
                         <div class="form-group">
 
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="InputPasswordlFirst" name="InputPassword" placeholder="Password" required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
+                            <div class="input-group">
+                                {!! Form::text('shop_category', null, ['class' => 'form-control', 'placeholder' => 'What do you sell??'])!!}
 
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="InputPasswordSecond" name="RepeatPassword" placeholder="Confirm Password" required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                </div>
+                                <!--<input type="password" class="form-control" id="InputPasswordlFirst" name="InputPassword" placeholder="Password" required>-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                             </div>
-
-                            <a href="customer_account"> <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right"></a>
                         </div>
-                    </form>
+                        <div class="form-group">
+
+                            <div class="input-group">
+                                {!! Form::text('shop_street', null, ['class' => 'form-control', 'placeholder' => 'The street where your shop is located'])!!}
+
+                                <!--<input type="password" class="form-control" id="InputPasswordSecond" name="RepeatPassword" placeholder="Confirm Password" required>-->
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                            </div>
+                        </div>
+
+                        <a href="customer_account"> <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right"></a>
+                    </div>
+                    <!--</form>-->
+                    {!! Form::close() !!}
 
                 </div>
             </div>
+        </div>
 
-            <div class="mastfoot">
-                <div class="inner">
-                    <p>copyright@<a href="#">shelves.com</a> 2015 </p>
-                </div>
+        <div class="mastfoot">
+            <div class="inner">
+                <p>copyright@<a href="#">shelves.com</a> 2015 </p>
             </div>
-
         </div>
 
     </div>
+
+</div>
 
 </div>
 
